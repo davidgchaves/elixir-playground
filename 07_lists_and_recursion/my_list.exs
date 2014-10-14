@@ -42,4 +42,10 @@ defmodule MyList do
 
   # iex(1)> MyList.sum [10,20,30,40]
   # 100
+
+  def my_sum([]), do: 0
+  def my_sum([head|tail]), do: head + my_sum(tail)
+
+  # iex(3)> MyList.my_sum [10,20,30,40]
+  # 100
 end
