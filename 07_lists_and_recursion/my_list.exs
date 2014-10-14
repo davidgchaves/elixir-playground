@@ -34,4 +34,12 @@ defmodule MyList do
   # [400]
   # iex(3)> MyList.map [20,30,40], fn (n) -> n*n end
   # [400, 900, 1600]
+
+  def sum(list), do: _sum(list, 0)
+
+  defp _sum([], total),          do: total
+  defp _sum([head|tail], total), do: _sum(tail, total+head)
+
+  # iex(1)> MyList.sum [10,20,30,40]
+  # 100
 end
