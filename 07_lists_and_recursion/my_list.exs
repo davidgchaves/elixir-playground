@@ -24,4 +24,14 @@ defmodule MyList do
   # [6]
   # iex(3)> MyList.add_1([5,6,7,8])
   # [6, 7, 8, 9]
+
+  def map([], _func),          do: []
+  def map([head|tail], func), do: [ func.(head) | map(tail, func) ]
+
+  # iex(1)> MyList.map [], fn (n) -> n*n end
+  # []
+  # iex(2)> MyList.map [20], fn (n) -> n*n end
+  # [400]
+  # iex(3)> MyList.map [20,30,40], fn (n) -> n*n end
+  # [400, 900, 1600]
 end
