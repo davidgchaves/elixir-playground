@@ -48,4 +48,12 @@ defmodule MyList do
 
   # iex(3)> MyList.my_sum [10,20,30,40]
   # 100
+
+  def reduce([], value, _func),         do: value
+  def reduce([head|tail], value, func), do: reduce(tail, func.(head, value), func)
+
+  # iex(1)> MyList.reduce([1,2,3,4,5], 0, &(&1 + &2))
+  # 15
+  # iex(2)> MyList.reduce([1,2,3,4,5], 1, &(&1 * &2))
+  # 120
 end
