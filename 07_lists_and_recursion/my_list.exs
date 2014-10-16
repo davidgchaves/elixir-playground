@@ -73,4 +73,12 @@ defmodule MyList do
   # 8
   # iex(3)> MyList.max [4,77,2,6,99,10]
   # 99
+
+  # NOTE: In Elixir, you can get a code point's value by using ?
+  def caesar([], _n),                           do: []
+  def caesar([head|tail], n) when head+n <= ?z, do: [head+n | caesar(tail, n)]
+  def caesar([head|tail], n),                   do: [head+n-26 | caesar(tail, n)]
+
+  # iex(1)> MyList.caesar('ryvkve', 13)
+  # 'elixir'
 end
