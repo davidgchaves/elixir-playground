@@ -62,4 +62,15 @@ defmodule MyList do
 
   # iex(1)> MyList.mapsum [1,2,3], &(&1 * &1)
   # 14
+
+  def max([]),          do: nil
+  def max([x]),         do: x
+  def max([head|tail]), do: Kernel.max(head, max(tail))
+
+  # iex(1)> MyList.max []
+  # nil
+  # iex(2)> MyList.max [8]
+  # 8
+  # iex(3)> MyList.max [4,77,2,6,99,10]
+  # 99
 end
