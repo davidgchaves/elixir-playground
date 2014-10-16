@@ -56,4 +56,10 @@ defmodule MyList do
   # 15
   # iex(2)> MyList.reduce([1,2,3,4,5], 1, &(&1 * &2))
   # 120
+
+  def mapsum([], _func),         do: 0
+  def mapsum([head|tail], func), do: func.(head) + mapsum(tail, func)
+
+  # iex(1)> MyList.mapsum [1,2,3], &(&1 * &1)
+  # 14
 end
