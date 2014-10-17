@@ -90,4 +90,35 @@ defmodule MyList do
   # [2, 1, 4, 3, 6, 5]
   # iex(2)> MyList.swap [1,2,3,4,5]
   # ** (RuntimeError) Can't swap a list with an odd number of elements
+
+  def weather_for(_location, []),
+    do: []
+  def weather_for(location, [ head = [_, location, _, _] | tail ]),
+    do: [ head | weather_for(location, tail) ]
+  def weather_for(location, [_|tail]),
+    do: weather_for(location, tail)
+
+  def test_data do
+    [
+      [1366225622, 26, 15, 0.125],
+      [1366225622, 27, 15, 0.45],
+      [1366225622, 28, 21, 0.25],
+      [1366229222, 26, 19, 0.081],
+      [1366229222, 27, 17, 0.468],
+      [1366229222, 28, 15, 0.60],
+      [1366232822, 26, 22, 0.095],
+      [1366232822, 27, 21, 0.05],
+      [1366232822, 28, 24, 0.03],
+      [1366236422, 26, 17, 0.025]
+    ]
+  end
+
+  # iex(1)> MyList.weather_for(27, MyList.test_data)
+  # [[1366225622, 27, 15, 0.45], [1366229222, 27, 17, 0.468], [1366232822, 27, 21, 0.05]]
+
+  # iex(2)> MyList.weather_for(28, MyList.test_data)
+  # [[1366225622, 28, 21, 0.25], [1366229222, 28, 15, 0.6], [1366232822, 28, 24, 0.03]]
+
+  # iex(3)> MyList.weather_for(29, MyList.test_data)
+  # []
 end
