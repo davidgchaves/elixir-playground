@@ -121,4 +121,16 @@ defmodule MyList do
 
   # iex(3)> MyList.weather_for(29, MyList.test_data)
   # []
+
+  def span(from, to) when from > to, do: []
+  def span(from, to),                do: [from | span(from+1, to)]
+
+  # iex(1)> MyList.span(5, 11)
+  # [5, 6, 7, 8, 9, 10, 11]
+
+  # iex(2)> MyList.span(6, 6)
+  # [6]
+
+  # iex(3)> MyList.span(4, 2)
+  # []
 end
