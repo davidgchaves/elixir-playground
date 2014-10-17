@@ -81,4 +81,13 @@ defmodule MyList do
 
   # iex(1)> MyList.caesar('ryvkve', 13)
   # 'elixir'
+
+  def swap([]),            do: []
+  def swap([a, b | tail]), do: [b, a | swap(tail)]
+  def swap([_]),           do: raise "Can't swap a list with an odd number of elements"
+
+  # iex(1)> MyList.swap [1,2,3,4,5,6]
+  # [2, 1, 4, 3, 6, 5]
+  # iex(2)> MyList.swap [1,2,3,4,5]
+  # ** (RuntimeError) Can't swap a list with an odd number of elements
 end
