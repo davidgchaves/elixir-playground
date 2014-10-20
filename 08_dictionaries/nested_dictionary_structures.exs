@@ -18,3 +18,8 @@ end
 # %BugReport{details: "broken",
 #            owner: %Customer{company: "PragProg", name: "Dave"},
 #            severity: 1}
+
+# iex(4)> update_in(report.owner.name, &("Mr. " <> &1))
+# %BugReport{details: "broken",
+#            owner: %Customer{company: "Pragmatic", name: "Mr. Dave"},
+#            severity: 1}
