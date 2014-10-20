@@ -13,3 +13,8 @@ end
 
 #iex(2)> report.owner.company
 #"Pragmatic"
+
+# iex(3)> put_in(report.owner.company, "PragProg")
+# %BugReport{details: "broken",
+#            owner: %Customer{company: "PragProg", name: "Dave"},
+#            severity: 1}
