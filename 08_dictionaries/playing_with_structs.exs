@@ -7,6 +7,7 @@ end
 # %Subscriber{name: "Mary", over_18: true, paid: true}
 
 defmodule Attendee do
+  @derive Access
   defstruct name: "", paid?: false, over_18?: true
 
   def may_attend_after_party(attendee = %Attendee{}) do
@@ -40,3 +41,12 @@ end
 # %Attendee{name: "", over_18?: true, paid?: false}
 # iex(7)> Attendee.print_vip_badge(attendee3)
 # ** (RuntimeError) Missing name for badge
+
+# iex(2)> sally[:name]
+# "Sally"
+# iex(3)> sally.name
+# "Sally"
+# iex(4)> sally[:over_18?]
+# true
+# iex(5)> sally.over_18?
+# true
