@@ -17,4 +17,31 @@ defmodule MyEnum do
   # true
   # iex(7)> MyEnum.all? [4,5,6,7], &(&1 < 5)
   # false
+
+
+  def each([], _), do: :ok
+  def each([head|tail], func) do
+    func.(head)
+    each(tail, func)
+  end
+
+  # iex(1)> Enum.each [], &(IO.puts &1)
+  # :ok
+  # iex(2)> MyEnum.each [], &(IO.puts &1)
+  # :ok
+
+  # iex(3)> Enum.each [1,2,3,4,5], &(IO.puts &1)
+  # 1
+  # 2
+  # 3
+  # 4
+  # 5
+  # :ok
+  # iex(4)> MyEnum.each [1,2,3,4,5], &(IO.puts &1)
+  # 1
+  # 2
+  # 3
+  # 4
+  # 5
+  # :ok
 end
