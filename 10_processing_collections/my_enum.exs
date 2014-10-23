@@ -44,4 +44,23 @@ defmodule MyEnum do
   # 4
   # 5
   # :ok
+
+  def filter([], _), do: []
+  def filter([head|tail], func) do
+    if func.(head) do
+      [head] ++ filter(tail, func)
+    else
+      [] ++ filter(tail, func)
+    end
+  end
+
+  # ex(1)> Enum.filter [], &(&1)
+  # []
+  # iex(2)> MyEnum.filter [], &(&1)
+  # []
+
+  # iex(3)> Enum.filter [1,2,3,4,5], &(&1 != 3)
+  # [1, 2, 4, 5]
+  # iex(4)> MyEnum.filter [1,2,3,4,5], &(&1 != 3)
+  # [1, 2, 4, 5]
 end
