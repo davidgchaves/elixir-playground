@@ -80,4 +80,20 @@ defmodule MyEnum do
   # {[1, 2, 3], [4, 5]}
   # iex(4)> MyEnum.split [1,2,3,4,5], 3
   # {[1, 2, 3], [4, 5]}
+
+
+  def take(coll, n),               do: _take(coll, n, [])
+  defp _take([], _, acc),          do: Enum.reverse(acc)
+  defp _take(_, 0, acc),           do: Enum.reverse(acc)
+  defp _take([head|tail], n, acc), do: _take(tail, n-1, [head|acc])
+
+  # iex(1)> Enum.take [], 3
+  # []
+  # iex(2)> MyEnum.take [], 3
+  # []
+
+  # iex(3)> Enum.take [1,2,3,4,5], 3
+  # [1, 2, 3]
+  # iex(4)> MyEnum.take [1,2,3,4,5], 3
+  # [1, 2, 3]
 end
