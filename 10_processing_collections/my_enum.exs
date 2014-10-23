@@ -45,6 +45,7 @@ defmodule MyEnum do
   # 5
   # :ok
 
+
   def filter([], _), do: []
   def filter([head|tail], func) do
     if func.(head) do
@@ -63,4 +64,20 @@ defmodule MyEnum do
   # [1, 2, 4, 5]
   # iex(4)> MyEnum.filter [1,2,3,4,5], &(&1 != 3)
   # [1, 2, 4, 5]
+
+
+  def split(coll, n),                      do: _split([], coll, n)
+  defp _split(left_split, [], _),          do: { Enum.reverse(left_split), [] }
+  defp _split(left_split, right_split, 0), do: { Enum.reverse(left_split), right_split }
+  defp _split(left_split, [head|tail], n), do: _split([head|left_split], tail, n-1)
+
+  # iex(1)> Enum.split [], 3
+  # {[], []}
+  # iex(2)> MyEnum.split [], 3
+  # {[], []}
+
+  # iex(3)> Enum.split [1,2,3,4,5], 3
+  # {[1, 2, 3], [4, 5]}
+  # iex(4)> MyEnum.split [1,2,3,4,5], 3
+  # {[1, 2, 3], [4, 5]}
 end
