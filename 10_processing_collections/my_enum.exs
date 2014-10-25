@@ -49,9 +49,9 @@ defmodule MyEnum do
   def filter([], _), do: []
   def filter([head|tail], func) do
     if func.(head) do
-      [head] ++ filter(tail, func)
+      [head | filter(tail, func)]
     else
-      [] ++ filter(tail, func)
+      filter(tail, func)
     end
   end
 
